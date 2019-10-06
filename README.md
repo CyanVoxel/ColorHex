@@ -5,6 +5,8 @@ A simple C# script that allows for creating UnityEngine Color32 variables via a 
 Getting ColorHex into your Unity project is as simple as dropping the [ColorHex.cs](ColorHex.cs) file into your `Assets/Scripts` project folder.
 
 ## Usage
+In order to have access to ColorHex in your script, make sure to include `using ColorHexUtility;` at the top of any script that requires it.
+
 Instead of using Color32's constructor which requires you to pass byte values, you can now use the ColorHex constructor to pass in a hex code string. Since ColorHex is designed to be interoperable with Color32, an implementation can look like this:
 
 ```cs
