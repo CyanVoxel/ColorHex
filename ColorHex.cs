@@ -1,6 +1,8 @@
-﻿// ColorHex struct - Mainly used as a way to create a Color32 using a hex code
-// @Author: Travis Abendshien (https://github.com/CyanVoxel)
-// @Version: 1.1
+﻿/// <summary>
+/// Struct <c>ColorHex</c> - Used to create Unity Colors via hex codes.
+/// Author: Travis Abendshien (https://github.com/CyanVoxel)
+/// Version: 1.2
+/// </summary>
 
 namespace ColorHexUtility
 {
@@ -63,6 +65,10 @@ namespace ColorHexUtility
             {
                 typeCheck = true;
             }
+            else if (this.GetType().Equals(obj.GetType()) || obj is UnityEngine.Color)
+            {
+                typeCheck = true;
+            }
 
             if (obj == null || !typeCheck)
             {
@@ -76,6 +82,21 @@ namespace ColorHexUtility
         }
 
         public static bool operator ==(UnityEngine.Color32 left, ColorHex right)
+        {
+            if (left.r == right.r
+                && left.g == right.g
+                && left.b == right.b
+                && left.a == right.a)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator ==(UnityEngine.Color left, ColorHex right)
         {
             if (left.r == right.r
                 && left.g == right.g
@@ -120,6 +141,21 @@ namespace ColorHexUtility
             }
         }
 
+        public static bool operator !=(UnityEngine.Color left, ColorHex right)
+        {
+            if (left.r != right.r
+                || left.g != right.g
+                || left.b != right.b
+                || left.a != right.a)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static bool operator !=(ColorHex left, ColorHex right)
         {
             if (left.r != right.r
@@ -138,6 +174,11 @@ namespace ColorHexUtility
         public static implicit operator UnityEngine.Color32(ColorHex c)
         {
             return new UnityEngine.Color32(c.r, c.g, c.b, c.a);
+        }
+
+        public static implicit operator UnityEngine.Color(ColorHex c)
+        {
+            return new UnityEngine.Color(c.r, c.g, c.b, c.a);
         }
 
         public override int GetHashCode()
